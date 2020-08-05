@@ -1,0 +1,95 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+#app {
+  width: 80%;
+  height: 80%;
+  border: 1px solid purple;
+  box-shadow: 1px 1px 1px 1px black;
+  position: relative;
+  margin: auto;
+  border-radius: 10px;
+  top: 50px;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+form {
+  width: 100%;
+  height: 100%;
+}
+
+h2 {
+  margin-top: 20px;
+}
+
+.error-div {
+  display: none;
+  font-size: 12px;
+  color: red;
+  position: relative;
+}
+
+.error-div-show {
+  display: block;
+}
+
+.form-error {
+  border: 2px solid red;
+}
+
+.form-group {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 80%;
+  margin-top: 20px;
+}
+
+.form-group label {
+  position: relative;
+  font-size: 20px;
+  font-weight: 600;
+  flex: 0.5;
+  max-width: 300px;
+}
+
+.input-and-error-div {
+  position: relative;
+  flex: 0.5;
+  max-width: 300px;
+}
+
+.input-and-error-div input, .form-group select {
+  width: 100%;
+}
+
+.input-and-error-div input[type=checkbox] {
+  width: 15px;
+  margin-right: 98%;
+  margin-left: 0px;
+}
+
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+#submitButton {
+  margin-top: 30px;
+  background-color: lightblue;
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+  color: white;
+  font-size: 17px;
+}

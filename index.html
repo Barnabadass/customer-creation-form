@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Customer creation form</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+  <div id="app">
+    <form>
+      <h1>Форма регистрации</h1>
+
+      <h2>Общая информация</h2>
+
+      <div class="form-group" v-for="item in generalInfoFields">
+        <label class="form-label">{{item.text}}</label>
+        <div class="input-and-error-div">
+          <input :type="item.type" class="form-input" v-model.trim="$v[item.model].$model" :class="{ 'form-error': $v[item.model].$error }" />
+          <div v-if="$v[item.model].$params !== undefined" class="error-div" 
+          :class="{ 'error-div-show': $v[item.model].$error }">{{item.error}}</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Пол</label>
+        <div class="input-and-error-div">
+          <select class="form-input" v-model.trim="$v.sex.$model">
+            <option value="male">Мужской</option>
+            <option value="female">Женский</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Группа клиентов*</label>
+        <div class="input-and-error-div">
+          <select class="form-input" multiple :class="{ 'form-error': $v.clientGroups.$error }" v-model.trim="$v.clientGroups.$model">
+            <option value="vip">VIP</option>
+            <option value="problems">Проблемные</option>
+            <option value="mmi">ОМС</option>
+          </select>
+          <div class="error-div" :class="{ 'error-div-show': $v.clientGroups.$error }">Поле обязательно для заполнения</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Лечащий врач</label>
+        <div class="input-and-error-div">
+          <select class="form-input" v-model.trim="$v.doctor.$model">
+            <option value="ivanov">Иванов</option>
+            <option value="zakharov">Захаров</option>
+            <option value="chernysheva">Чернышева</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Не отправлять СМС</label>
+        <div class="input-and-error-div">
+          <input type="checkbox" v-model.trim="$v.sendSms.$model" />
+        </div>
+      </div>
+
+      <h2>Адрес</h2>
+
+      <div class="form-group" v-for="item in addressFields">
+        <label class="form-label">{{item.text}}</label>
+        <div class="input-and-error-div">
+          <input class="form-input" v-model.trim="$v[item.model].$model" :class="{ 'form-error': $v[item.model].$error }" />
+          <div v-if="$v[item.model].$params.required !== undefined" class="error-div" 
+          :class="{ 'error-div-show': $v[item.model].$error }">Поле обязательно для заполнения</div>
+        </div>
+      </div>
+
+      <h2>Паспорт</h2>
+
+      <div class="form-group">
+        <label class="form-label">Тип документа*</label>
+        <div class="input-and-error-div">
+          <select class="form-input" v-model.trim="$v.document.$model">
+            <option value="passport">Паспорт</option>
+            <option value="birthCertificate">Свидетельство о рождении</option>
+            <option value="driversLicense">Вод. удостоверение</option>
+          </select>
+          <div class="error-div" :class="{ 'error-div-show': $v.document.$error }">Поле обязательно для заполнения</div>
+        </div>
+      </div>
+
+      <div class="form-group" v-for="item in passportFields">
+        <label class="form-label">{{item.text}}</label>
+        <div class="input-and-error-div">
+          <input :type="item.type" class="form-input" v-model.trim="$v[item.model].$model" 
+          :class="{ 'form-error': $v[item.model].$error }" />
+          <div v-if="$v[item.model].$params !== undefined" class="error-div" 
+          :class="{ 'error-div-show': $v[item.model].$error }">{{item.error}}</div>
+        </div>
+      </div>
+
+      <input type="submit" id="submitButton" value="Завершить" v-on:click="submit">
+
+    </form>
+  </div>
+  <script src="./bundle.js"></script>
+</body>
+
+</html>
